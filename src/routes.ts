@@ -10,6 +10,7 @@ import { ListUserSendComplimentsController } from './controllers/ListUserSendCom
 import { ListTagsController } from './controllers/ListTagsController';
 import { ListUsersController } from './controllers/ListUsersController';
 import { GetUserController } from './controllers/GetUserController';
+import { DeleteTagController } from './controllers/DeleteTagController';
 
 const router = Router();
 
@@ -22,10 +23,12 @@ const listUserSendComplimentsController = new ListUserSendComplimentsController(
 const listTagsController = new ListTagsController();
 const listUsersController = new ListUsersController();
 const getUserController = new GetUserController();
+const deleteTagController = new DeleteTagController();
 
 router.post("/login", authenticateUserController.handle);
 router.post("/tags", ensureAuthenticated, ensureAdmin, createTagController.handle);
 router.get("/tags", listTagsController.handle)
+router.delete("/tags/:id", ensureAuthenticated, ensureAdmin, deleteTagController.handle)
 
 router.post("/users", createUserController.handle);
 router.get("/users", ensureAuthenticated, listUsersController.handle);
