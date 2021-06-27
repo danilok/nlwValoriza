@@ -1,6 +1,7 @@
 import { getCustomRepository } from 'typeorm';
 import { TagsRepository } from '../repositories/TagsRepositories';
 
+import { classToPlain } from 'class-transformer';
 
 class CreateTagService { 
 
@@ -26,7 +27,7 @@ class CreateTagService {
 
     await tagsRepositories.save(tag);
 
-    return tag;
+    return classToPlain(tag);
   }
 }
 
