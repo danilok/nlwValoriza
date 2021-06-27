@@ -51,7 +51,10 @@ Executar o comando
 node -e "console.log( require('crypto').randomBytes(256).toString('base64'))"
 ```
 
-# Config Vars para Heroku
+# Percorrendo a próxima milha
+
+## Aplicação hospeada no heroku
+### Config Vars para Heroku
 ```
 TYPEORM_CONNECTION=postgres
 TYPEORM_HOST=<conf db heroku>
@@ -59,8 +62,6 @@ TYPEORM_USERNAME=<conf db heroku>
 TYPEORM_PASSWORD=<conf db heroku>
 TYPEORM_DATABASE=<conf db heroku>
 TYPEORM_PORT=<conf db heroku>
-# TYPEORM_SYNCHRONIZE=true
-# TYPEORM_LOGGING=
 TYPEORM_MIGRATIONS=build/database/migrations/*.js
 TYPEORM_MIGRATIONS_DIR=src/database/migrations
 TYPEORM_ENTITIES=build/entities/*.js
@@ -72,5 +73,23 @@ API_KEY=<gerar novo>
 
 Obs: migrations e entities apontam para arquivos `.js` da pasta `build`. Caso não tenha um certificado, é possível desabilitar a validação do SSL para se conectar com o banco de dados addon do heroku. Uma dica é testar a conexão com o banco de dados do heroku usando o beekeeper usando a URI e desabilitando a flag `Reject Unauthorized` após ativar o `Enable SSL`.
 
-# Exemplo de rota funcionando no heroku
+<br>
+
+## Exemplo de rota funcionando no heroku
 https://nlw-valoriza.herokuapp.com/tags
+
+<br>
+
+## Aplicação front-end
+Foi desenvolvido uma aplicação em Angular conectado ao backend deste projeto hospedado no Heroku.
+
+Para testar, visite o seguinte link:
+https://nlw-valoriza-app.vercel.app
+
+Repositório: https://github.com/danilok/nlw-valoriza-app
+
+<br>
+
+## Novas funcionalidades
+- Recuperar dados de usuário por Id: `/users/:id`
+- Deletar tag: `/tags/:id`
